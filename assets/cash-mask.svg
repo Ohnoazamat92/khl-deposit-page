@@ -1,0 +1,7 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="23" height="15.5" viewBox="0 0 23 15.5" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Mask">
+<path id="Mask_2" opacity="0.35" d="M0 13H19.5C19.5 14.3807 18.3807 15.5 17 15.5H0V13Z" fill="black"/>
+<path id="Mask_3" opacity="0.7" fill-rule="evenodd" clip-rule="evenodd" d="M18.5 0H4.5V13H18.5V0ZM10.7426 10.2427L16.4429 4.54231L16.0451 4.16361C15.259 3.41511 14.0194 3.43031 13.2518 4.19785L10.7426 6.70712L9.68192 5.64649C8.90086 4.86542 7.6345 4.86544 6.85346 5.64652L6.5 6L10.7426 10.2427Z" fill="black"/>
+<path id="Mask_4" fill-rule="evenodd" clip-rule="evenodd" d="M4 0C1.79086 0 0 1.79086 0 4V13H4.5V0H4ZM23 0H18.5V13H20C21.6569 13 23 11.6569 23 10V0Z" fill="black"/>
+</g>
+</svg>
