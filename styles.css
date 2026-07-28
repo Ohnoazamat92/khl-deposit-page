@@ -72,12 +72,13 @@ h1 {
 }
 
 .filter-button {
+  box-shadow: inset 0 0 0 1px var(--border);
   min-height: 42px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 9px 14px;
-  border: 1px solid var(--border);
+  border: 0;
   border-radius: 8px;
   background: #fff;
   color: var(--text-primary);
@@ -85,8 +86,7 @@ h1 {
 }
 
 .filter-button.is-active {
-  border: 2px solid var(--accent);
-  padding: 8px 12px 8px 14px;
+  box-shadow: inset 0 0 0 2px var(--accent);
 }
 
 .badge {
@@ -105,7 +105,7 @@ h1 {
 .slider-field {
   position: relative;
   min-width: 0;
-  padding-bottom: 28px;
+  padding-bottom: 34px;
 }
 
 .slider-field::before {
@@ -143,9 +143,9 @@ h1 {
 .slider-field input[type="range"] {
   position: absolute;
   z-index: 2;
-  top: 50px;
-  left: 12px;
-  width: calc(100% - 24px);
+  top: 48px;
+  left: 16px;
+  width: calc(100% - 32px);
   height: 12px;
   margin: 0;
   appearance: none;
@@ -236,10 +236,10 @@ h1 {
 
 .promo-image {
   position: absolute;
-  top: 8px;
-  right: -21px;
-  width: 280px;
-  height: 116px;
+  top: 4%;
+  left: 57.19%;
+  width: 52.38%;
+  height: 97.5%;
   object-fit: contain;
 }
 
@@ -341,6 +341,10 @@ h1 {
   min-width: 0;
 }
 
+.metric > div {
+  min-width: 0;
+}
+
 .metric-icon {
   width: 40px;
   height: 40px;
@@ -369,7 +373,7 @@ h1 {
 }
 
 .metric strong {
-  display: block;
+  display: inline-block;
   font-weight: 400;
   line-height: 20px;
 }
@@ -416,7 +420,7 @@ h1 {
   justify-content: center;
   border-radius: 12px;
   background: var(--neutral);
-  padding: 6px 16px;
+  padding: 0 16px;
 }
 
 .phone-field span {
@@ -480,6 +484,7 @@ h1 {
   }
 
   .promo-image {
+    left: auto;
     right: -68px;
     top: 72px;
     width: 260px;
