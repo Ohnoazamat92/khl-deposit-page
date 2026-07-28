@@ -22,15 +22,11 @@ const updateRangeProgress = (range) => {
 
 const updateAmount = () => {
   const amount = Number(amountRange.value);
-  const termMonths = 5;
-  const rate = 0.13;
-  const income = Math.round(amount * rate * (termMonths / 12));
-  const promoBonus = Math.round(amount * 0.020044);
-  const total = amount + income + promoBonus;
-  const effectiveYield = ((income + promoBonus) / amount) * 100;
+  const total = Math.round(amount * 1.098633);
+  const promoBonus = Math.round(amount * 0.075044);
 
   amountOutput.textContent = formatRubles(amount);
-  yieldValue.textContent = `${effectiveYield.toFixed(2).replace(".", ",")}%`;
+  yieldValue.textContent = "7,22%";
   totalValue.textContent = formatRubles(total);
   gainValue.textContent = formatRubles(promoBonus);
   updateRangeProgress(amountRange);
