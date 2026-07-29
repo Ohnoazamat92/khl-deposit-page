@@ -9,8 +9,8 @@
   --positive: #00a328;
   --avatar: #959ba4;
   --card: #f2f4f8;
-  --font-ui: "Neue Haas Unica W1G", Arial, Helvetica, sans-serif;
-  --font-heading: "T-Sans", "Tinkoff Sans", Arial, Helvetica, sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -19,6 +19,8 @@
 
 html {
   background: #fff;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -27,6 +29,8 @@ body {
   font-family: var(--font-ui);
   font-size: 15px;
   line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
 }
 
 button,
@@ -536,12 +540,12 @@ h1 {
   }
 
   .promo-copy p {
-    max-width: 265px;
+    max-width: 230px;
   }
 
   .promo-image {
     left: auto;
-    right: -68px;
+    right: -96px;
     top: 72px;
     width: 260px;
     height: 108px;
