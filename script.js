@@ -9,6 +9,7 @@ const phoneInput = document.querySelector("#phoneInput");
 const phoneField = document.querySelector(".phone-field");
 const phoneClear = document.querySelector(".phone-clear");
 const filterButtons = document.querySelectorAll(".filter-button");
+const promoCard = document.querySelector(".promo-card");
 const form = document.querySelector(".lead-form");
 
 const formatRubles = (value) =>
@@ -66,6 +67,7 @@ const updateTermAvailability = (selectedButton) => {
 
   termRange.disabled = isKhlDeposit;
   termField.classList.toggle("is-disabled", isKhlDeposit);
+  promoCard.hidden = !isKhlDeposit;
 
   if (isKhlDeposit) {
     termRange.value = 5;
@@ -81,6 +83,8 @@ filterButtons.forEach((button) => {
     updateTermAvailability(button);
   });
 });
+
+updateTermAvailability(document.querySelector(".filter-button.is-active"));
 
 const updatePhoneState = () => {
   phoneField.classList.toggle("has-value", phoneInput.value.length > 0);
