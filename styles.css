@@ -273,6 +273,11 @@ h1 {
   color: var(--text-secondary);
 }
 
+.promo-title-mobile,
+.promo-text-mobile {
+  display: none;
+}
+
 .promo-image {
   position: absolute;
   top: 4%;
@@ -799,30 +804,43 @@ h1 {
   }
 
   .promo-copy h2 {
-    max-width: 190px;
+    max-width: 220px;
     font-size: 20px;
     font-weight: 700;
     line-height: 22px;
     letter-spacing: 0.38px;
   }
 
-  .promo-copy p {
-    max-width: 205px;
+  .promo-card .promo-title-desktop {
+    display: none;
+  }
+
+  .promo-card .promo-title-mobile {
+    display: inline;
+  }
+
+  .promo-card .promo-copy p {
+    max-width: 245px;
     font-size: 15px;
     line-height: 18px;
     letter-spacing: -0.24px;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    overflow: visible;
   }
 
-  .promo-image {
-    top: 2%;
-    left: 45%;
+  .promo-card .promo-text-desktop {
+    display: none;
+  }
+
+  .promo-card .promo-text-mobile {
+    display: inline;
+  }
+
+  .promo-card .promo-image {
+    top: -3.03%;
+    left: 25%;
     right: auto;
-    width: 80.57%;
-    height: 87.24%;
+    width: 115.45%;
+    height: 125%;
   }
 
   .checkbox-row {
