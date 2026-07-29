@@ -222,6 +222,10 @@ h1 {
   padding: 20px 24px;
 }
 
+.promo-card[hidden] {
+  display: none;
+}
+
 .promo-copy {
   position: relative;
   z-index: 1;
