@@ -11,6 +11,9 @@ const phoneClear = document.querySelector(".phone-clear");
 const filterButtons = document.querySelectorAll(".filter-button");
 const promoCard = document.querySelector(".promo-card");
 const form = document.querySelector(".lead-form");
+const promoTransitionMs = 240;
+let promoHideTimer;
+let promoHasInitialized = false;
 
 const formatRubles = (value) =>
   new Intl.NumberFormat("ru-RU", {
@@ -61,13 +64,45 @@ const updateTerm = () => {
   updateRangeProgress(termRange);
 };
 
+const setPromoVisibility = (shouldShow) => {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  clearTimeout(promoHideTimer);
+
+  if (!promoHasInitialized || reduceMotion) {
+    promoCard.hidden = !shouldShow;
+    promoCard.classList.toggle("is-hiding", !shouldShow);
+    promoCard.toggleAttribute("aria-hidden", !shouldShow);
+    promoHasInitialized = true;
+    return;
+  }
+
+  if (shouldShow) {
+    promoCard.hidden = false;
+    promoCard.setAttribute("aria-hidden", "true");
+    promoCard.classList.add("is-hiding");
+    promoCard.getBoundingClientRect();
+
+    requestAnimationFrame(() => {
+      promoCard.classList.remove("is-hiding");
+      promoCard.removeAttribute("aria-hidden");
+    });
+    return;
+  }
+
+  promoCard.setAttribute("aria-hidden", "true");
+  promoCard.classList.add("is-hiding");
+  promoHideTimer = setTimeout(() => {
+    promoCard.hidden = true;
+  }, promoTransitionMs);
+};
+
 const updateTermAvailability = (selectedButton) => {
   const isKhlDeposit = selectedButton.textContent.includes("КХЛ");
   const termField = termRange.closest(".slider-field");
 
   termRange.disabled = isKhlDeposit;
   termField.classList.toggle("is-disabled", isKhlDeposit);
-  promoCard.hidden = !isKhlDeposit;
+  setPromoVisibility(isKhlDeposit);
 
   if (isKhlDeposit) {
     termRange.value = 5;

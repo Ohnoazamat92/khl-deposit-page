@@ -213,6 +213,7 @@ h1 {
 .promo-card {
   position: relative;
   min-height: 116px;
+  max-height: 220px;
   display: flex;
   align-items: flex-start;
   overflow: hidden;
@@ -220,6 +221,27 @@ h1 {
   background: var(--card);
   margin-bottom: 20px;
   padding: 20px 24px;
+  transform-origin: top center;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    min-height 220ms ease,
+    max-height 220ms ease,
+    margin-bottom 220ms ease,
+    padding-top 220ms ease,
+    padding-bottom 220ms ease;
+  will-change: opacity, transform, max-height;
+}
+
+.promo-card.is-hiding {
+  min-height: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
 }
 
 .promo-card[hidden] {
@@ -784,6 +806,12 @@ h1 {
   .legal {
     line-height: normal;
     letter-spacing: -0.08px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-card {
+    transition: none;
   }
 }
 
