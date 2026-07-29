@@ -50,8 +50,9 @@ button {
 }
 
 .deposit-form {
-  width: 536px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 536px;
+  min-width: 0;
 }
 
 h1,
