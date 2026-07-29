@@ -3,6 +3,8 @@ const amountOutput = document.querySelector("#amountOutput");
 const yieldValue = document.querySelector("#yieldValue");
 const totalValue = document.querySelector("#totalValue");
 const gainValue = document.querySelector("#gainValue");
+const termRange = document.querySelector("#termRange");
+const termOutput = document.querySelector("#termOutput");
 const phoneInput = document.querySelector("#phoneInput");
 const phoneField = document.querySelector(".phone-field");
 const phoneClear = document.querySelector(".phone-clear");
@@ -34,10 +36,49 @@ const updateAmount = () => {
   updateRangeProgress(amountRange);
 };
 
+const formatMonths = (value) => {
+  const lastTwo = value % 100;
+  const last = value % 10;
+
+  if (lastTwo >= 11 && lastTwo <= 14) {
+    return `${value} месяцев`;
+  }
+
+  if (last === 1) {
+    return `${value} месяц`;
+  }
+
+  if (last >= 2 && last <= 4) {
+    return `${value} месяца`;
+  }
+
+  return `${value} месяцев`;
+};
+
+const updateTerm = () => {
+  termOutput.textContent = formatMonths(Number(termRange.value));
+  updateRangeProgress(termRange);
+};
+
+const updateTermAvailability = (selectedButton) => {
+  const isKhlDeposit = selectedButton.textContent.includes("КХЛ");
+  const termField = termRange.closest(".slider-field");
+
+  termRange.disabled = isKhlDeposit;
+  termField.classList.toggle("is-disabled", isKhlDeposit);
+
+  if (isKhlDeposit) {
+    termRange.value = 5;
+  }
+
+  updateTerm();
+};
+
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     filterButtons.forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
+    updateTermAvailability(button);
   });
 });
 
@@ -99,5 +140,7 @@ form.addEventListener("submit", (event) => {
 
 document.querySelectorAll('input[type="range"]').forEach(updateRangeProgress);
 updateAmount();
+updateTerm();
 updatePhoneState();
 amountRange.addEventListener("input", updateAmount);
+termRange.addEventListener("input", updateTerm);
