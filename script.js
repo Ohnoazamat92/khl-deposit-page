@@ -5,6 +5,7 @@ const totalValue = document.querySelector("#totalValue");
 const gainValue = document.querySelector("#gainValue");
 const termRange = document.querySelector("#termRange");
 const termOutput = document.querySelector("#termOutput");
+const termOptionButtons = document.querySelectorAll(".term-option");
 const phoneInput = document.querySelector("#phoneInput");
 const phoneField = document.querySelector(".phone-field");
 const phoneClear = document.querySelector(".phone-clear");
@@ -61,6 +62,9 @@ const formatMonths = (value) => {
 
 const updateTerm = () => {
   termOutput.textContent = formatMonths(Number(termRange.value));
+  termOptionButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.term === termRange.value);
+  });
   updateRangeProgress(termRange);
 };
 
@@ -106,10 +110,19 @@ const updateTermAvailability = (selectedButton) => {
 
   if (isKhlDeposit) {
     termRange.value = 5;
+  } else if (!["3", "6", "9", "12"].includes(termRange.value)) {
+    termRange.value = 3;
   }
 
   updateTerm();
 };
+
+termOptionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    termRange.value = button.dataset.term;
+    updateTerm();
+  });
+});
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
