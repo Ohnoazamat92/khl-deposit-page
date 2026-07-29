@@ -524,9 +524,56 @@ h1 {
     --font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 
+  body {
+    font-size: 15px;
+    letter-spacing: -0.24px;
+    line-height: 24px;
+  }
+
   .page {
     justify-content: flex-start;
-    padding: 32px 16px;
+    padding: 24px 16px;
+  }
+
+  .deposit-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1 {
+    order: 1;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.38px;
+  }
+
+  .filters {
+    order: 2;
+    margin-bottom: 20px;
+  }
+
+  .filter-button {
+    min-height: 32px;
+    gap: 4px;
+    padding: 6px 12px;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+
+  .badge {
+    width: 20px;
+    height: 20px;
+  }
+
+  .slider-grid {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
   }
 
   .slider-grid,
@@ -535,46 +582,223 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .slider-field {
+    padding-bottom: 28px;
+  }
+
+  .slider-field:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 0;
+  }
+
+  .slider-field:first-child::before,
+  .slider-field:first-child input[type="range"],
+  .slider-field:first-child .range-labels {
+    display: none;
+  }
+
+  .slider-field:first-child label {
+    padding: 0;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.24px;
+  }
+
+  .slider-field:first-child output {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 2px var(--accent);
+    font-size: 0;
+    line-height: 0;
+    white-space: nowrap;
+  }
+
+  .slider-field:first-child output::after {
+    content: "5 мес";
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.24px;
+  }
+
+  .slider-field.is-disabled {
+    opacity: 1;
+  }
+
+  .slider-field:not(:first-child) label {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0;
+  }
+
+  .slider-field:not(:first-child) output {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+
+  .range-labels {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+
   .promo-card {
-    min-height: 164px;
-    padding-right: 18px;
+    order: 4;
+    min-height: 124px;
+    margin-bottom: 20px;
+    padding: 20px 24px;
   }
 
   .promo-copy h2 {
-    max-width: 310px;
-    font-size: 22px;
+    max-width: 190px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.38px;
   }
 
   .promo-copy p {
-    max-width: 230px;
+    max-width: 205px;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.24px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .promo-image {
-    left: auto;
-    right: -96px;
-    top: 72px;
-    width: 260px;
-    height: 108px;
+    top: -28%;
+    left: 49.34%;
+    right: auto;
+    width: 80.57%;
+    height: 87.24%;
+  }
+
+  .checkbox-row {
+    order: 5;
+    gap: 2px;
+    width: auto;
+    margin-bottom: 20px;
+    cursor: default;
+  }
+
+  .checkbox-row input,
+  .checkbox-mark {
+    display: none;
+  }
+
+  .checkbox-label {
+    color: var(--text-primary);
+    font-size: 0;
+    line-height: 0;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .checkbox-label::after {
+    content: "Срок пополнения ограничен";
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.24px;
+  }
+
+  .checkbox-row .hint {
+    width: 24px;
+    height: 24px;
+    background-size: 16px 16px;
+  }
+
+  .rate-card {
+    order: 6;
+    margin-bottom: 24px;
+    padding: 20px 24px 16px;
+  }
+
+  .rate-header {
+    margin-bottom: 8px;
+  }
+
+  .rate-header strong {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.38px;
+  }
+
+  .rate-header > span,
+  .metric .gain {
+    display: none;
+  }
+
+  .rate-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .metric strong {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: -0.24px;
+  }
+
+  .metric p {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .lead-form {
+    order: 7;
+  }
+
+  .lead-form > p:first-child {
+    margin-bottom: 12px;
+  }
+
+  .lead-row {
+    gap: 24px;
+    margin-bottom: 24px;
   }
 
   .lead-row button {
     width: 100%;
   }
+
+  .legal {
+    line-height: normal;
+    letter-spacing: -0.08px;
+  }
 }
 
 @media (max-width: 390px) {
   .filter-button {
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     justify-content: center;
   }
 
-  h1,
+  h1 {
+    font-size: 20px;
+  }
+
   .rate-header strong {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .checkbox-label,
   .metric p {
-    white-space: normal;
+    white-space: nowrap;
   }
 }
