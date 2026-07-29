@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>КХЛ x Вклад — версия 2</title>
+    <link rel="stylesheet" href="../styles.css?v=13">
+  </head>
+  <body>
+    <main class="page" aria-label="Настройка вклада">
+      <section class="deposit-form version-v2" data-node-id="2762:13738">
+        <h1>Настройте вклад</h1>
+
+        <div class="filters" role="group" aria-label="Валюта вклада">
+          <button class="filter-button" type="button">В рублях</button>
+          <button class="filter-button" type="button">В юанях</button>
+          <button class="filter-button is-active" type="button">
+            <span>КХЛ x Вклад</span>
+            <img class="badge" src="../assets/khl-badge.png" alt="">
+          </button>
+        </div>
+
+        <div class="slider-grid">
+          <div class="slider-field is-disabled">
+            <label for="termRange">Срок вклада</label>
+            <output id="termOutput" for="termRange">5 месяцев</output>
+            <div class="term-options" aria-label="Срок вклада">
+              <button class="term-option" type="button" data-term="3">3 мес</button>
+              <button class="term-option" type="button" data-term="6">6 мес</button>
+              <button class="term-option" type="button" data-term="9">9 мес</button>
+              <button class="term-option" type="button" data-term="12">12 мес</button>
+              <button class="term-other" type="button">Другой срок</button>
+            </div>
+            <input id="termRange" type="range" min="1" max="24" value="5" disabled>
+            <div class="range-labels">
+              <span>1 месяц</span>
+              <span>24 месяца</span>
+            </div>
+          </div>
+
+          <div class="slider-field">
+            <label for="amountRange">Сумма вклада</label>
+            <output id="amountOutput" for="amountRange">1 000 000 ₽</output>
+            <input id="amountRange" type="range" min="50000" max="30000000" step="50000" value="1000000">
+            <div class="range-labels">
+              <span>50 000 ₽</span>
+              <span>30 000 000 ₽</span>
+            </div>
+          </div>
+        </div>
+
+        <label class="checkbox-row">
+          <input type="checkbox" checked>
+          <span class="checkbox-mark" aria-hidden="true"></span>
+          <span class="checkbox-label">Пополняемый вклад</span>
+          <span class="hint" aria-label="Подсказка"></span>
+        </label>
+
+        <article class="rate-card rate-card-v2">
+          <header class="rate-header">
+            <strong>Ставка <span id="rateValue">13%</span></strong>
+            <span>11%</span>
+          </header>
+
+          <div class="rate-metrics">
+            <div class="metric">
+              <span class="metric-icon wallet" aria-hidden="true"></span>
+              <div>
+                <strong id="yieldValue">7,22%</strong>
+                <p>Доходность <span class="hint" aria-label="Подсказка"></span></p>
+              </div>
+            </div>
+
+            <div class="metric">
+              <span class="metric-icon cash" aria-hidden="true"></span>
+              <div>
+                <strong id="totalValue">1 098 633 ₽</strong>
+                <p class="gain">
+                  <span class="arrow-up" aria-hidden="true"></span>
+                  <span id="gainValue">75 044 ₽</span>
+                </p>
+                <p>Сумма в конце срока <span class="hint" aria-label="Подсказка"></span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rate-promo promo-target">
+            <div class="promo-copy">
+              <h2>Т-Банк и КХЛ в одной команде</h2>
+              <p>Откройте вклад на 5 месяцев<br>и участвуйте в розыгрыше</p>
+            </div>
+            <img class="promo-image" src="../assets/khl-helmet.png" alt="">
+          </div>
+        </article>
+
+        <form class="lead-form">
+          <p>Введите номер телефона, чтобы оформить вклад</p>
+          <div class="lead-row">
+            <div class="phone-field">
+              <label class="phone-label" for="phoneInput">Мобильный телефон*</label>
+              <input id="phoneInput" type="tel" inputmode="tel" autocomplete="tel" aria-label="Мобильный телефон">
+              <button class="phone-clear" type="button" aria-label="Очистить телефон"></button>
+            </div>
+            <button type="submit">Продолжить</button>
+          </div>
+          <p class="legal">
+            Заполняя форму, вы принимаете
+            <a href="#">условия передачи информации</a>
+            и даете
+            <a href="#">согласие на получение информации о продуктах и услугах Банка и партнеров</a>
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <script src="../script.js?v=9"></script>
+  </body>
+</html>
