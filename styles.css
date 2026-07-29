@@ -252,6 +252,10 @@ h1 {
   display: none;
 }
 
+.promo-target[hidden] {
+  display: none;
+}
+
 .promo-copy {
   position: relative;
   z-index: 1;
@@ -341,6 +345,10 @@ h1 {
   padding: 20px 24px 16px;
 }
 
+.version-v2 .rate-card {
+  padding: 20px 24px 24px;
+}
+
 .rate-header {
   display: flex;
   align-items: baseline;
@@ -366,6 +374,59 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+}
+
+.rate-promo {
+  position: relative;
+  height: 112px;
+  max-height: 140px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  margin-top: 20px;
+  padding: 20px;
+  transform-origin: top center;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    height 220ms ease,
+    max-height 220ms ease,
+    margin-top 220ms ease,
+    padding-top 220ms ease,
+    padding-bottom 220ms ease;
+  will-change: opacity, transform, max-height;
+}
+
+.rate-promo.is-hiding {
+  height: 0;
+  max-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+}
+
+.rate-promo .promo-copy h2 {
+  max-width: 300px;
+  font-size: 20px;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.rate-promo .promo-copy p {
+  max-width: 260px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.rate-promo .promo-image {
+  top: 18px;
+  left: 61%;
+  width: 52%;
+  height: 110px;
 }
 
 .metric {
@@ -804,6 +865,10 @@ h1 {
     padding: 20px 24px 16px;
   }
 
+  .version-v2 .rate-card {
+    padding-bottom: 16px;
+  }
+
   .rate-header {
     margin-bottom: 8px;
   }
@@ -824,6 +889,39 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 4px;
+  }
+
+  .rate-promo {
+    height: 124px;
+    margin-top: 16px;
+    padding: 20px 24px;
+  }
+
+  .rate-promo .promo-copy h2 {
+    max-width: 190px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: 0.38px;
+    white-space: normal;
+  }
+
+  .rate-promo .promo-copy p {
+    max-width: 205px;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.24px;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .rate-promo .promo-image {
+    top: 2%;
+    left: 45%;
+    width: 80.57%;
+    height: 87.24%;
   }
 
   .metric strong {
@@ -863,7 +961,8 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .promo-card {
+  .promo-card,
+  .rate-promo {
     transition: none;
   }
 }

@@ -10,7 +10,7 @@ const phoneInput = document.querySelector("#phoneInput");
 const phoneField = document.querySelector(".phone-field");
 const phoneClear = document.querySelector(".phone-clear");
 const filterButtons = document.querySelectorAll(".filter-button");
-const promoCard = document.querySelector(".promo-card");
+const promoTarget = document.querySelector(".promo-target, .promo-card");
 const form = document.querySelector(".lead-form");
 const promoTransitionMs = 240;
 let promoHideTimer;
@@ -73,30 +73,30 @@ const setPromoVisibility = (shouldShow) => {
   clearTimeout(promoHideTimer);
 
   if (!promoHasInitialized || reduceMotion) {
-    promoCard.hidden = !shouldShow;
-    promoCard.classList.toggle("is-hiding", !shouldShow);
-    promoCard.toggleAttribute("aria-hidden", !shouldShow);
+    promoTarget.hidden = !shouldShow;
+    promoTarget.classList.toggle("is-hiding", !shouldShow);
+    promoTarget.toggleAttribute("aria-hidden", !shouldShow);
     promoHasInitialized = true;
     return;
   }
 
   if (shouldShow) {
-    promoCard.hidden = false;
-    promoCard.setAttribute("aria-hidden", "true");
-    promoCard.classList.add("is-hiding");
-    promoCard.getBoundingClientRect();
+    promoTarget.hidden = false;
+    promoTarget.setAttribute("aria-hidden", "true");
+    promoTarget.classList.add("is-hiding");
+    promoTarget.getBoundingClientRect();
 
     requestAnimationFrame(() => {
-      promoCard.classList.remove("is-hiding");
-      promoCard.removeAttribute("aria-hidden");
+      promoTarget.classList.remove("is-hiding");
+      promoTarget.removeAttribute("aria-hidden");
     });
     return;
   }
 
-  promoCard.setAttribute("aria-hidden", "true");
-  promoCard.classList.add("is-hiding");
+  promoTarget.setAttribute("aria-hidden", "true");
+  promoTarget.classList.add("is-hiding");
   promoHideTimer = setTimeout(() => {
-    promoCard.hidden = true;
+    promoTarget.hidden = true;
   }, promoTransitionMs);
 };
 
