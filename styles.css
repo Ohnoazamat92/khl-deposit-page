@@ -414,18 +414,21 @@ h1 {
 }
 
 .phone-field {
+  position: relative;
   height: 56px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 12px;
   background: var(--neutral);
-  padding: 0 16px;
+  padding: 0 44px 0 16px;
 }
 
-.phone-field span {
+.phone-label {
   color: var(--text-secondary);
+  font-size: 15px;
   line-height: 20px;
+  transition: font-size 0.12s ease, line-height 0.12s ease;
 }
 
 .phone-field input {
@@ -434,7 +437,60 @@ h1 {
   outline: 0;
   background: transparent;
   color: var(--text-primary);
+  font-size: 15px;
   line-height: 20px;
+}
+
+.phone-field:not(.is-active):not(.has-value) input {
+  height: 0;
+  opacity: 0;
+}
+
+.phone-field.is-active,
+.phone-field.has-value {
+  gap: 2px;
+}
+
+.phone-field.is-active .phone-label,
+.phone-field.has-value .phone-label {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.phone-clear {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  display: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.phone-clear::before,
+.phone-clear::after {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 3px;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--text-muted);
+}
+
+.phone-clear::before {
+  transform: rotate(45deg);
+}
+
+.phone-clear::after {
+  transform: rotate(-45deg);
+}
+
+.phone-field.has-value .phone-clear {
+  display: block;
 }
 
 .lead-row button {

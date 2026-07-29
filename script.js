@@ -4,6 +4,8 @@ const yieldValue = document.querySelector("#yieldValue");
 const totalValue = document.querySelector("#totalValue");
 const gainValue = document.querySelector("#gainValue");
 const phoneInput = document.querySelector("#phoneInput");
+const phoneField = document.querySelector(".phone-field");
+const phoneClear = document.querySelector(".phone-clear");
 const filterButtons = document.querySelectorAll(".filter-button");
 const form = document.querySelector(".lead-form");
 
@@ -39,6 +41,25 @@ filterButtons.forEach((button) => {
   });
 });
 
+const updatePhoneState = () => {
+  phoneField.classList.toggle("has-value", phoneInput.value.length > 0);
+};
+
+phoneField.addEventListener("click", (event) => {
+  if (event.target !== phoneClear) {
+    phoneInput.focus();
+  }
+});
+
+phoneInput.addEventListener("focus", () => {
+  phoneField.classList.add("is-active");
+});
+
+phoneInput.addEventListener("blur", () => {
+  phoneField.classList.remove("is-active");
+  updatePhoneState();
+});
+
 phoneInput.addEventListener("input", () => {
   const digits = phoneInput.value.replace(/\D/g, "").slice(0, 11);
   const normalized = digits.startsWith("8") ? `7${digits.slice(1)}` : digits;
@@ -46,6 +67,7 @@ phoneInput.addEventListener("input", () => {
 
   if (!normalized) {
     phoneInput.value = "";
+    updatePhoneState();
     return;
   }
 
@@ -60,6 +82,15 @@ phoneInput.addEventListener("input", () => {
   ]
     .filter(Boolean)
     .join("");
+  updatePhoneState();
+});
+
+phoneClear.addEventListener("click", (event) => {
+  event.stopPropagation();
+  phoneInput.value = "";
+  phoneInput.blur();
+  phoneField.classList.remove("is-active");
+  updatePhoneState();
 });
 
 form.addEventListener("submit", (event) => {
@@ -68,4 +99,5 @@ form.addEventListener("submit", (event) => {
 
 document.querySelectorAll('input[type="range"]').forEach(updateRangeProgress);
 updateAmount();
+updatePhoneState();
 amountRange.addEventListener("input", updateAmount);

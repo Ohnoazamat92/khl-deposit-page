@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>КХЛ x Вклад</title>
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=3">
   </head>
   <body>
     <main class="page" aria-label="Настройка вклада">
@@ -89,10 +89,11 @@
         <form class="lead-form">
           <p>Введите номер телефона, чтобы оформить вклад</p>
           <div class="lead-row">
-            <label class="phone-field">
-              <span>Мобильный телефон*</span>
+            <div class="phone-field">
+              <label class="phone-label" for="phoneInput">Мобильный телефон*</label>
               <input id="phoneInput" type="tel" inputmode="tel" autocomplete="tel" aria-label="Мобильный телефон">
-            </label>
+              <button class="phone-clear" type="button" aria-label="Очистить телефон"></button>
+            </div>
             <button type="submit">Продолжить</button>
           </div>
           <p class="legal">
@@ -105,6 +106,6 @@
       </section>
     </main>
 
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
   </body>
 </html>
