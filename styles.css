@@ -274,7 +274,6 @@ h1 {
 }
 
 .promo-title-mobile,
-.promo-title-break-mobile,
 .promo-text-mobile {
   display: none;
 }
@@ -918,15 +917,18 @@ h1 {
 
   .rate-promo .promo-copy h2 {
     max-width: 190px;
-    font-size: 20px;
+    font-size: 0;
     font-weight: 700;
-    line-height: 22px;
+    line-height: 0;
     letter-spacing: 0.38px;
     white-space: normal;
   }
 
-  .rate-promo .promo-title-break-mobile {
-    display: block;
+  .rate-promo .promo-copy h2::before {
+    content: "Т-Банк и КХЛ\Aв одной команде";
+    white-space: pre-line;
+    font-size: 20px;
+    line-height: 22px;
   }
 
   .rate-promo .promo-copy p {
