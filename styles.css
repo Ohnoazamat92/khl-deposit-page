@@ -274,6 +274,7 @@ h1 {
 }
 
 .promo-title-mobile,
+.promo-title-break-mobile,
 .promo-text-mobile {
   display: none;
 }
@@ -910,9 +911,9 @@ h1 {
   }
 
   .rate-promo {
-    height: 124px;
+    height: 156px;
     margin-top: 16px;
-    padding: 20px 24px;
+    padding: 24px;
   }
 
   .rate-promo .promo-copy h2 {
@@ -924,15 +925,16 @@ h1 {
     white-space: normal;
   }
 
+  .rate-promo .promo-title-break-mobile {
+    display: block;
+  }
+
   .rate-promo .promo-copy p {
-    max-width: 205px;
+    max-width: 245px;
     font-size: 15px;
     line-height: 18px;
     letter-spacing: -0.24px;
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    overflow: visible;
   }
 
   .rate-promo .promo-image {
