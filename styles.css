@@ -324,8 +324,8 @@ h1 {
   top: -19.69%;
   left: 53.55%;
   width: 79.7%;
-  height: 153.45%;
-  object-fit: fill;
+  height: auto;
+  object-fit: contain;
 }
 
 .checkbox-row {
@@ -881,7 +881,7 @@ h1 {
     left: 25%;
     right: auto;
     width: 115.45%;
-    height: 125%;
+    height: auto;
   }
 
   .checkbox-row {
