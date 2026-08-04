@@ -262,12 +262,6 @@ h1 {
   will-change: opacity, transform;
 }
 
-.promo-card.is-image-hiding .promo-image,
-.rate-promo.is-image-hiding .promo-image {
-  animation: promo-image-fade-out 180ms cubic-bezier(0.2, 0, 0, 1) 1 both;
-  will-change: opacity;
-}
-
 @keyframes promo-shine-sweep {
   0% {
     opacity: 0;
@@ -294,16 +288,6 @@ h1 {
   100% {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes promo-image-fade-out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
   }
 }
 
@@ -1069,9 +1053,7 @@ h1 {
   }
 
   .promo-card.is-image-revealing .promo-image,
-  .rate-promo.is-image-revealing .promo-image,
-  .promo-card.is-image-hiding .promo-image,
-  .rate-promo.is-image-hiding .promo-image {
+  .rate-promo.is-image-revealing .promo-image {
     animation: none;
   }
 }
