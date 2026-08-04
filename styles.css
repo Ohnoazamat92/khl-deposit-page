@@ -299,18 +299,19 @@ h1 {
 
 .promo-copy h2 {
   font-family: var(--font-heading);
-  max-width: 335px;
-  font-size: 20px;
+  max-width: 324px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 24px;
   font-weight: 500;
-  line-height: 24px;
-  margin-bottom: 8px;
+  line-height: 28px;
+  margin-bottom: 4px;
 }
 
 .promo-copy p {
-  max-width: 310px;
-  color: var(--text-secondary);
-  font-size: 13px;
-  line-height: 20px;
+  max-width: 488px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 15px;
+  line-height: 24px;
 }
 
 .promo-title-mobile,
@@ -320,11 +321,11 @@ h1 {
 
 .promo-image {
   position: absolute;
-  top: -2px;
-  left: 210px;
-  width: 430px;
-  height: 156px;
-  object-fit: contain;
+  top: -19.69%;
+  left: 53.55%;
+  width: 79.7%;
+  height: 153.45%;
+  object-fit: fill;
 }
 
 .checkbox-row {
