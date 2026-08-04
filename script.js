@@ -145,7 +145,7 @@ const setPromoVisibility = (shouldShow) => {
 };
 
 const updateTermAvailability = (selectedButton) => {
-  const isKhlDeposit = selectedButton.textContent.includes("КХЛ");
+  const isKhlDeposit = selectedButton.dataset.deposit === "khl";
   const termField = termRange.closest(".slider-field");
 
   termRange.disabled = isKhlDeposit;
@@ -170,6 +170,10 @@ termOptionButtons.forEach((button) => {
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    if (button.classList.contains("is-active")) {
+      return;
+    }
+
     filterButtons.forEach((item) => item.classList.remove("is-active"));
     button.classList.add("is-active");
     updateTermAvailability(button);

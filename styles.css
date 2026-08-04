@@ -912,9 +912,9 @@ h1 {
 
   .promo-card .promo-image {
     top: -3.79%;
-    left: 42.14%;
+    left: 144px;
     right: auto;
-    width: min(116.9%, 401px);
+    width: 401px;
     height: auto;
   }
 
