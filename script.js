@@ -16,6 +16,12 @@ const promoTransitionMs = 240;
 let promoHideTimer;
 let promoHasInitialized = false;
 
+promoTarget.addEventListener("animationend", (event) => {
+  if (event.animationName === "promo-shine-sweep") {
+    promoTarget.classList.remove("is-shining");
+  }
+});
+
 const formatRubles = (value) =>
   new Intl.NumberFormat("ru-RU", {
     maximumFractionDigits: 0,
@@ -72,11 +78,26 @@ const setPromoVisibility = (shouldShow) => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   clearTimeout(promoHideTimer);
 
+  const playPromoShine = () => {
+    if (reduceMotion) {
+      return;
+    }
+
+    promoTarget.classList.remove("is-shining");
+    promoTarget.getBoundingClientRect();
+    promoTarget.classList.add("is-shining");
+  };
+
   if (!promoHasInitialized || reduceMotion) {
     promoTarget.hidden = !shouldShow;
     promoTarget.classList.toggle("is-hiding", !shouldShow);
     promoTarget.toggleAttribute("aria-hidden", !shouldShow);
     promoHasInitialized = true;
+
+    if (shouldShow) {
+      playPromoShine();
+    }
+
     return;
   }
 
@@ -89,10 +110,12 @@ const setPromoVisibility = (shouldShow) => {
     requestAnimationFrame(() => {
       promoTarget.classList.remove("is-hiding");
       promoTarget.removeAttribute("aria-hidden");
+      playPromoShine();
     });
     return;
   }
 
+  promoTarget.classList.remove("is-shining");
   promoTarget.setAttribute("aria-hidden", "true");
   promoTarget.classList.add("is-hiding");
   promoHideTimer = setTimeout(() => {
