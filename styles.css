@@ -320,10 +320,10 @@ h1 {
 
 .promo-image {
   position: absolute;
-  top: -10px;
-  left: 300px;
-  width: 367px;
-  height: 143px;
+  top: -2px;
+  left: 210px;
+  width: 430px;
+  height: 156px;
   object-fit: contain;
 }
 
