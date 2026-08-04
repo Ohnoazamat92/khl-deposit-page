@@ -19,6 +19,8 @@ let promoHasInitialized = false;
 promoTarget.addEventListener("animationend", (event) => {
   if (event.animationName === "promo-shine-sweep") {
     promoTarget.classList.remove("is-shining");
+  } else if (event.animationName === "promo-image-fade-in") {
+    promoTarget.classList.remove("is-image-revealing");
   }
 });
 
@@ -88,6 +90,16 @@ const setPromoVisibility = (shouldShow) => {
     promoTarget.classList.add("is-shining");
   };
 
+  const playPromoImageReveal = () => {
+    if (reduceMotion) {
+      return;
+    }
+
+    promoTarget.classList.remove("is-image-revealing");
+    promoTarget.getBoundingClientRect();
+    promoTarget.classList.add("is-image-revealing");
+  };
+
   if (!promoHasInitialized || reduceMotion) {
     promoTarget.hidden = !shouldShow;
     promoTarget.classList.toggle("is-hiding", !shouldShow);
@@ -95,6 +107,7 @@ const setPromoVisibility = (shouldShow) => {
     promoHasInitialized = true;
 
     if (shouldShow) {
+      playPromoImageReveal();
       playPromoShine();
     }
 
@@ -110,12 +123,13 @@ const setPromoVisibility = (shouldShow) => {
     requestAnimationFrame(() => {
       promoTarget.classList.remove("is-hiding");
       promoTarget.removeAttribute("aria-hidden");
+      playPromoImageReveal();
       playPromoShine();
     });
     return;
   }
 
-  promoTarget.classList.remove("is-shining");
+  promoTarget.classList.remove("is-shining", "is-image-revealing");
   promoTarget.setAttribute("aria-hidden", "true");
   promoTarget.classList.add("is-hiding");
   promoHideTimer = setTimeout(() => {
