@@ -13,6 +13,7 @@ const filterButtons = document.querySelectorAll(".filter-button");
 const promoTarget = document.querySelector(".promo-target, .promo-card");
 const form = document.querySelector(".lead-form");
 const promoTransitionMs = 240;
+const promoImageHideMs = 140;
 let promoHideTimer;
 let promoHasInitialized = false;
 
@@ -102,6 +103,7 @@ const setPromoVisibility = (shouldShow) => {
 
   if (!promoHasInitialized || reduceMotion) {
     promoTarget.hidden = !shouldShow;
+    promoTarget.classList.remove("is-image-revealing", "is-image-hiding");
     promoTarget.classList.toggle("is-hiding", !shouldShow);
     promoTarget.toggleAttribute("aria-hidden", !shouldShow);
     promoHasInitialized = true;
@@ -117,6 +119,7 @@ const setPromoVisibility = (shouldShow) => {
   if (shouldShow) {
     promoTarget.hidden = false;
     promoTarget.setAttribute("aria-hidden", "true");
+    promoTarget.classList.remove("is-image-hiding");
     promoTarget.classList.add("is-hiding");
     promoTarget.getBoundingClientRect();
 
@@ -129,12 +132,16 @@ const setPromoVisibility = (shouldShow) => {
     return;
   }
 
-  promoTarget.classList.remove("is-shining", "is-image-revealing");
+  promoTarget.classList.remove("is-shining", "is-image-revealing", "is-hiding");
   promoTarget.setAttribute("aria-hidden", "true");
-  promoTarget.classList.add("is-hiding");
+  promoTarget.classList.add("is-image-hiding");
   promoHideTimer = setTimeout(() => {
-    promoTarget.hidden = true;
-  }, promoTransitionMs);
+    promoTarget.classList.remove("is-image-hiding");
+    promoTarget.classList.add("is-hiding");
+    promoHideTimer = setTimeout(() => {
+      promoTarget.hidden = true;
+    }, promoTransitionMs);
+  }, promoImageHideMs);
 };
 
 const updateTermAvailability = (selectedButton) => {
