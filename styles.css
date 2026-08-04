@@ -217,7 +217,7 @@ h1 {
 
 .promo-card {
   position: relative;
-  min-height: 116px;
+  min-height: 120px;
   max-height: 220px;
   display: flex;
   align-items: flex-start;
@@ -299,14 +299,18 @@ h1 {
 
 .promo-copy h2 {
   font-family: var(--font-heading);
-  font-size: 24px;
+  max-width: 335px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 28px;
+  line-height: 24px;
   margin-bottom: 8px;
 }
 
 .promo-copy p {
+  max-width: 310px;
   color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 20px;
 }
 
 .promo-title-mobile,
@@ -316,10 +320,10 @@ h1 {
 
 .promo-image {
   position: absolute;
-  top: 4%;
-  left: 57.19%;
-  width: 52.38%;
-  height: 97.5%;
+  top: -10px;
+  left: 300px;
+  width: 367px;
+  height: 143px;
   object-fit: contain;
 }
 
