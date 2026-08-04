@@ -13,7 +13,7 @@ const filterButtons = document.querySelectorAll(".filter-button");
 const promoTarget = document.querySelector(".promo-target, .promo-card");
 const form = document.querySelector(".lead-form");
 const promoTransitionMs = 240;
-const promoImageHideMs = 140;
+const promoImageHideMs = 180;
 let promoHideTimer;
 let promoHasInitialized = false;
 
@@ -136,10 +136,10 @@ const setPromoVisibility = (shouldShow) => {
   promoTarget.setAttribute("aria-hidden", "true");
   promoTarget.classList.add("is-image-hiding");
   promoHideTimer = setTimeout(() => {
-    promoTarget.classList.remove("is-image-hiding");
     promoTarget.classList.add("is-hiding");
     promoHideTimer = setTimeout(() => {
       promoTarget.hidden = true;
+      promoTarget.classList.remove("is-image-hiding");
     }, promoTransitionMs);
   }, promoImageHideMs);
 };
