@@ -1115,6 +1115,18 @@ h1 {
 }
 
 @media (max-width: 439px) {
+  .promo-card .promo-copy p {
+    max-width: 300px;
+  }
+
+  .promo-card .promo-text-mobile {
+    display: none;
+  }
+
+  .promo-card .promo-text-narrow {
+    display: inline;
+  }
+
   .promo-card .promo-image {
     top: -3.03%;
     left: 43.91%;
