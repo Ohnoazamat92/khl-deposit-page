@@ -1093,7 +1093,7 @@ h1 {
   }
 }
 
-@media (min-width: 376px) and (max-width: 567px) {
+@media (min-width: 440px) and (max-width: 567px) {
   .promo-card .promo-copy p {
     max-width: 340px;
   }
@@ -1111,6 +1111,15 @@ h1 {
     left: auto;
     right: -178px;
     width: 427px;
+  }
+}
+
+@media (max-width: 439px) {
+  .promo-card .promo-image {
+    top: -3.03%;
+    left: 43.91%;
+    width: 115.45%;
+    height: 125%;
   }
 }
 
