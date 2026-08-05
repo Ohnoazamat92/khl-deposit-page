@@ -1078,6 +1078,19 @@ h1 {
   }
 }
 
+@media (min-width: 568px) and (max-width: 620px) {
+  .promo-card .promo-copy p {
+    max-width: 380px;
+  }
+
+  .promo-card .promo-image {
+    top: -24px;
+    left: auto;
+    right: -178px;
+    width: 427px;
+  }
+}
+
 @media (min-width: 376px) and (max-width: 567px) {
   .promo-card .promo-image {
     top: -24px;
