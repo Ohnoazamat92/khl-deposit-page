@@ -1058,6 +1058,14 @@ h1 {
   }
 }
 
+@media (min-width: 376px) and (max-width: 567px) {
+  .promo-card .promo-image {
+    top: -24px;
+    left: 53.55%;
+    width: 427px;
+  }
+}
+
 @media (max-width: 375px) {
   .promo-card .promo-image {
     top: -3.03%;
