@@ -15,6 +15,7 @@ const form = document.querySelector(".lead-form");
 const promoTransitionMs = 240;
 let promoHideTimer;
 let promoHasInitialized = false;
+let promoShineHasPlayed = false;
 
 promoTarget.addEventListener("animationend", (event) => {
   if (event.animationName === "promo-shine-sweep") {
@@ -81,12 +82,13 @@ const setPromoVisibility = (shouldShow) => {
   clearTimeout(promoHideTimer);
 
   const playPromoShine = () => {
-    if (reduceMotion) {
+    if (reduceMotion || promoShineHasPlayed) {
       return;
     }
 
     promoTarget.classList.remove("is-shining");
     promoTarget.getBoundingClientRect();
+    promoShineHasPlayed = true;
     promoTarget.classList.add("is-shining");
   };
 
