@@ -895,10 +895,10 @@ h1 {
   }
 
   .promo-card .promo-image {
-    top: -3.03%;
-    left: clamp(47.78%, calc(40.85% + 1.65vw), 50.75%);
+    top: -19.69%;
+    left: 53.55%;
     right: auto;
-    width: clamp(63.13%, calc(162.463% - 16.556vw), 92.93%);
+    width: 79.7%;
     height: auto;
   }
 
@@ -1058,10 +1058,12 @@ h1 {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 375px) {
   .promo-card .promo-image {
-    left: clamp(43.91%, calc(11.66% + 8.6vw), 47.78%);
-    width: clamp(92.93%, calc(303.117% - 50.044vw), 115.45%);
+    top: -3.03%;
+    left: 43.91%;
+    width: 115.45%;
+    height: 125%;
   }
 }
 
