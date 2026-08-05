@@ -147,7 +147,7 @@ const updateTermAvailability = (selectedButton) => {
   setPromoVisibility(isKhlDeposit);
 
   if (isKhlDeposit) {
-    termRange.value = 5;
+    termRange.value = 6;
   } else if (!["3", "6", "9", "12"].includes(termRange.value)) {
     termRange.value = 3;
   }

@@ -781,7 +781,7 @@ h1 {
   }
 
   .slider-field:first-child output::after {
-    content: "5 мес";
+    content: "6 мес";
     color: var(--text-primary);
     font-size: 15px;
     line-height: 24px;
