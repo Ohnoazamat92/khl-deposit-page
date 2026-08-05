@@ -351,7 +351,8 @@ h1 {
 }
 
 .promo-title-mobile,
-.promo-text-mobile {
+.promo-text-mobile,
+.promo-text-narrow {
   display: none;
 }
 
@@ -1092,6 +1093,14 @@ h1 {
 }
 
 @media (min-width: 376px) and (max-width: 567px) {
+  .promo-card .promo-text-mobile {
+    display: none;
+  }
+
+  .promo-card .promo-text-narrow {
+    display: inline;
+  }
+
   .promo-card .promo-image {
     top: -24px;
     left: auto;
