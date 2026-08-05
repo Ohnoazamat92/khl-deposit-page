@@ -352,7 +352,8 @@ h1 {
 
 .promo-title-mobile,
 .promo-text-mobile,
-.promo-text-narrow {
+.promo-text-narrow,
+.promo-text-compact {
   display: none;
 }
 
@@ -1114,6 +1115,19 @@ h1 {
 }
 
 @media (max-width: 375px) {
+  .promo-card .promo-copy p {
+    max-width: 320px;
+  }
+
+  .promo-card .promo-text-mobile,
+  .promo-card .promo-text-narrow {
+    display: none;
+  }
+
+  .promo-card .promo-text-compact {
+    display: inline;
+  }
+
   .promo-card .promo-image {
     top: -3.03%;
     left: 43.91%;
