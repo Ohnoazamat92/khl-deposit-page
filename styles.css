@@ -922,6 +922,10 @@ h1 {
     height: auto;
   }
 
+  .promo-card.is-image-hiding .promo-image {
+    animation: none;
+  }
+
   .checkbox-row {
     order: 5;
     gap: 2px;
