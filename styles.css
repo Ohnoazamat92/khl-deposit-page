@@ -1061,8 +1061,9 @@ h1 {
 @media (min-width: 376px) and (max-width: 567px) {
   .promo-card .promo-image {
     top: -24px;
-    left: 53.55%;
-    width: 79.7%;
+    left: auto;
+    right: -178px;
+    width: 427px;
   }
 }
 
