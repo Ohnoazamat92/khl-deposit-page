@@ -56,8 +56,12 @@ function render() {
   $('amount-min').textContent = money(min) + ' ' + symbol;
   $('amount-max').textContent = money(max) + ' ' + symbol;
   $('currency-symbol').textContent = symbol;
+  $('khl-chip').hidden = !autoCurrency;
+  $('khl-banner').hidden = !state.khl;
+  $('months').disabled = Boolean(state.khl);
+  $('month-range').disabled = Boolean(state.khl);
   for (const button of document.querySelectorAll('[data-currency]')) {
-    button.setAttribute('aria-pressed', String(button.dataset.currency === state.currency));
+    button.setAttribute('aria-pressed', String(button.dataset.currency === (state.khl ? 'KHL' : state.currency)));
     button.setAttribute('aria-disabled', String(!autoCurrency && button.dataset.currency === 'CNY' && state.frequency === 'maturity'));
   }
   $('currency-help').textContent = !autoCurrency && state.frequency === 'maturity' ? 'На вкладе с выплатой в конце срока доступны только рубли' : 'Можно выбрать рубли или юани';
@@ -80,7 +84,10 @@ function dispatch(type, value) {
   hideHint();
   const result = change(state, type, value, autoCurrency);
   state = result.state;
-  if (type === 'currency' && !result.notice) { error('amount'); $('amount').value = money(state.amounts[state.currency]); }
+  if (type === 'currency' && !result.notice) {
+    error('amount'); $('amount').value = money(state.amounts[state.currency]);
+    if (state.khl) { error('months'); $('months').value = state.months; }
+  }
   if (type !== 'amount') closeMenu();
   notify(result.notice);
   render();

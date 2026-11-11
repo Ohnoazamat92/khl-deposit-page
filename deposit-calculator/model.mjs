@@ -6,6 +6,7 @@ export function change(s, type, value, autoCurrency = false) {
   const next = { ...s, amounts: { ...s.amounts } };
   let notice = '';
   if (type === 'months') {
+    if (s.khl) return { state: s };
     if (!Number.isInteger(value) || value < 1 || value > 24) return { state: s };
     next.months = value;
     next.frequency = maturityAllowed(next) ? s.preferred : 'monthly';
@@ -16,9 +17,24 @@ export function change(s, type, value, autoCurrency = false) {
     next.frequency = value;
     if (!autoCurrency || s.currency === 'RUB') next.preferred = value;
   } else if (type === 'currency') {
+    if (value === 'KHL' && autoCurrency) {
+      if (s.khl) return { state: s };
+      next.khl = true;
+      next.regularMonths = s.months;
+      next.months = 4;
+      next.currency = 'RUB';
+      next.frequency = s.preferred;
+      next.replenishable = s.preferredReplenishable;
+      return { state: next, notice };
+    }
     if (!['RUB', 'CNY'].includes(value)) return { state: s };
     if (!autoCurrency && value === 'CNY' && s.frequency === 'maturity') return { state: s, notice: 'На вкладе с выплатой в конце срока доступны только рубли' };
     next.currency = value;
+    if (s.khl) {
+      next.khl = false;
+      next.months = s.regularMonths;
+      next.replenishable = next.months === 1 ? false : s.preferredReplenishable;
+    }
     if (autoCurrency) next.frequency = maturityAllowed(next) ? s.preferred : 'monthly';
     else if (value === 'CNY') next.frequency = next.preferred = 'monthly';
   } else if (type === 'amount') {
