@@ -174,20 +174,30 @@ for (const button of document.querySelectorAll('[data-hint]')) button.addEventLi
   const tip = $('tooltip');
   const text = hintText(button.dataset.hint);
   tip.replaceChildren();
-  for (const block of text.split('\n\n')) {
-    const paragraph = document.createElement('p'), [title, body] = block.split('\n');
+  const blocks = text.split('\n\n');
+  const list = blocks.length > 1 ? document.createElement('ul') : null;
+  if (list) tip.append(list);
+  for (const block of blocks) {
+    const item = document.createElement(list ? 'li' : 'p'), [title, body] = block.split('\n');
     if (body) {
-      const heading = document.createElement('strong');
+      const heading = document.createElement('p'), description = document.createElement('p');
+      heading.className = 'tooltip-title';
       heading.textContent = title;
-      paragraph.append(heading, document.createElement('br'), document.createTextNode(body));
-    } else paragraph.textContent = title;
-    tip.append(paragraph);
+      description.textContent = body;
+      item.append(heading, description);
+    } else item.textContent = title;
+    (list || tip).append(item);
   }
   tip.hidden = false;
   button.setAttribute('aria-expanded', 'true'); button.setAttribute('aria-describedby', 'tooltip');
   const parent = document.querySelector('.calculator').getBoundingClientRect(), rect = button.getBoundingClientRect();
-  tip.style.left = Math.max(0, Math.min(rect.left - parent.left - 16, parent.width - tip.offsetWidth)) + 'px';
-  tip.style.top = rect.bottom - parent.top + 10 + 'px';
+  const anchor = rect.left + rect.width / 2 - parent.left;
+  const left = Math.max(0, Math.min(anchor - tip.offsetWidth / 2, parent.width - tip.offsetWidth));
+  const above = rect.bottom + 12 + tip.offsetHeight > window.innerHeight && rect.top >= tip.offsetHeight + 12;
+  tip.dataset.placement = above ? 'above' : 'below';
+  tip.style.left = left + 'px';
+  tip.style.top = (above ? rect.top - parent.top - tip.offsetHeight - 12 : rect.bottom - parent.top + 12) + 'px';
+  tip.style.setProperty('--arrow-x', Math.max(16, Math.min(anchor - left, tip.offsetWidth - 16)) + 'px');
 });
 document.addEventListener('click', event => {
   if (!$('payout').contains(event.target)) closeMenu();
