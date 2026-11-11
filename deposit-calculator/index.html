@@ -40,10 +40,11 @@
           <button id="monthly-option" class="option" type="button" role="option" aria-selected="false" data-frequency="monthly"><span>Каждый месяц</span><small>Проценты приходят раз в месяц в один и тот же день</small></button>
         </div>
       </div>
-      <div class="replenishment">
+      <div id="replenishment" class="replenishment">
         <label class="checkbox-label"><input id="replenishable" type="checkbox"><span class="checkbox" aria-hidden="true"></span><span>Пополняемый вклад</span></label>
         <button class="hint" type="button" data-hint="replenishment" aria-label="Условия пополнения" aria-expanded="false"><img src="assets/question.svg" alt=""></button>
       </div>
+      <div id="one-month-card" class="one-month-card" hidden><span>Ограничен срок пополнения</span><button type="button" data-hint="replenishment" aria-expanded="false">Подробности</button></div>
       <section id="khl-banner" class="khl-banner" aria-labelledby="khl-heading" hidden>
         <img src="assets/khl-banner.png" alt="">
         <div class="khl-copy"><h2 id="khl-heading">Т-Банк и КХЛ в одной команде</h2><p>Откройте вклад на&nbsp;4 месяца и&nbsp;участвуйте в&nbsp;розыгрыше&nbsp;призов</p></div>

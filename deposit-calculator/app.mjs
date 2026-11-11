@@ -80,6 +80,8 @@ function render() {
   $('maturity-option').setAttribute('aria-disabled', String(!maturityAllowed(state)));
   const maturityRate = calculate({ ...state, frequency: 'maturity' }).rate;
   $('maturity-description').textContent = `Ставка ${percent(maturityRate)}. Проценты придут только после закрытия вклада`;
+  $('replenishment').hidden = autoCurrency && state.months === 1;
+  $('one-month-card').hidden = !autoCurrency || state.months !== 1;
   $('replenishable').checked = state.replenishable;
   $('replenishable').disabled = state.months === 1;
   renderResults();
@@ -170,7 +172,18 @@ for (const button of document.querySelectorAll('[data-hint]')) button.addEventLi
   if (wasOpen) return;
   hintOwner = button;
   const tip = $('tooltip');
-  tip.textContent = hintText(button.dataset.hint); tip.hidden = false;
+  const text = hintText(button.dataset.hint);
+  tip.replaceChildren();
+  for (const block of text.split('\n\n')) {
+    const paragraph = document.createElement('p'), [title, body] = block.split('\n');
+    if (body) {
+      const heading = document.createElement('strong');
+      heading.textContent = title;
+      paragraph.append(heading, document.createElement('br'), document.createTextNode(body));
+    } else paragraph.textContent = title;
+    tip.append(paragraph);
+  }
+  tip.hidden = false;
   button.setAttribute('aria-expanded', 'true'); button.setAttribute('aria-describedby', 'tooltip');
   const parent = document.querySelector('.calculator').getBoundingClientRect(), rect = button.getBoundingClientRect();
   tip.style.left = Math.max(0, Math.min(rect.left - parent.left - 16, parent.width - tip.offsetWidth)) + 'px';
