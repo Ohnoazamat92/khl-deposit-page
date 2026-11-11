@@ -55,7 +55,17 @@
           <div class="metric"><span class="avatar"><img src="assets/cash.svg" alt=""></span><div><div class="amounts"><span id="total">1 124 000 ₽</span><span class="profit"><span class="arrow" aria-hidden="true"></span><span id="income">124 000 ₽</span></span></div><div class="metric-label">Сумма в конце срока <button class="hint" type="button" data-hint="total" aria-label="Как рассчитана сумма в конце срока" aria-expanded="false"><img src="assets/question.svg" alt=""></button></div></div></div>
         </div>
       </section>
-      <p class="demo-note">Демонстрационный расчёт</p>
+      <form id="phone-form" class="phone-form" aria-labelledby="phone-heading" novalidate hidden>
+        <p id="phone-heading">Введите номер телефона, чтобы оформить вклад</p>
+        <div class="phone-row">
+          <label class="phone-field"><input id="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" placeholder=" " required aria-describedby="phone-error phone-demo"><span>Телефон</span></label>
+          <button type="submit">Продолжить</button>
+        </div>
+        <p id="phone-error" class="error" role="alert" hidden></p>
+        <p id="phone-status" class="phone-status" role="status" hidden></p>
+        <p class="phone-legal">Заполняя форму, я принимаю <a href="https://www.tbank.ru/static/documents/oferta-information-transfer-terms.pdf" target="_blank" rel="noopener noreferrer">условия передачи информации</a></p>
+      </form>
+      <p id="phone-demo" class="demo-note">Демонстрационный расчёт</p>
       <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
     </section>
   </main>

@@ -2,6 +2,9 @@ import { initialState, limits, maturityAllowed, change, calculate, parseNumber, 
 const autoCurrency = true;
 let state = initialState();
 const $ = id => document.getElementById(id);
+document.body.classList.toggle('variant-b', autoCurrency);
+$('phone-form').hidden = !autoCurrency;
+if (autoCurrency) $('phone-demo').textContent = 'Демонстрационный расчёт. Форма не отправляет данные.';
 const money = n => n.toLocaleString('ru-RU', { maximumFractionDigits: 2 });
 const percent = n => n.toLocaleString('ru-RU', { maximumFractionDigits: 2 }) + '%';
 const monthWord = n => n === 1 || n === 21 ? 'месяц' : [2, 3, 4, 22, 23, 24].includes(n) ? 'месяца' : 'месяцев';
@@ -180,4 +183,31 @@ document.addEventListener('click', event => {
 document.addEventListener('keydown', event => { if (event.key === 'Escape') { if (!$('payout-options').hidden) closeMenu(true); hideHint(); notify(''); } });
 $('notice-close').addEventListener('click', () => notify(''));
 window.addEventListener('resize', hideHint);
+function phoneDigits() {
+  const value = $('phone').value;
+  if (!/^[+\d\s()-]*$/.test(value)) return '';
+  const digits = value.replace(/\D/g, '');
+  return digits.length === 10 ? '7' + digits : digits.replace(/^8/, '7');
+}
+function validatePhone() {
+  const valid = /^7\d{10}$/.test(phoneDigits());
+  $('phone').setAttribute('aria-invalid', String(!valid));
+  $('phone-error').textContent = $('phone').value.trim() ? 'Введите номер полностью: +7 и ещё 10 цифр' : 'Введите номер телефона';
+  $('phone-error').hidden = valid;
+  return valid;
+}
+$('phone').addEventListener('input', () => {
+  $('phone-status').hidden = true;
+  if ($('phone').getAttribute('aria-invalid') === 'true') validatePhone();
+});
+$('phone').addEventListener('blur', () => {
+  if (!$('phone').value.trim() || !validatePhone()) return;
+  $('phone').value = phoneDigits().replace(/^7(\d{3})(\d{3})(\d{2})(\d{2})$/, '+7 ($1) $2-$3-$4');
+});
+$('phone-form').addEventListener('submit', event => {
+  event.preventDefault();
+  if (!validatePhone()) { $('phone').focus(); return; }
+  $('phone-status').textContent = 'Номер заполнен. В прототипе СМС не отправляется.';
+  $('phone-status').hidden = false;
+});
 render();
