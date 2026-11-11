@@ -24,14 +24,16 @@
         </div>
         <div class="field-group">
           <label class="field" for="amount"><span class="caption">Сумма вклада</span><span class="input-line"><input id="amount" type="text" inputmode="decimal" autocomplete="off" value="1 000 000" aria-describedby="amount-error"><span id="currency-symbol">₽</span></span></label>
-          <input id="amount-range" class="range" type="range" min="0" max="1000" value="300" aria-label="Сумма вклада, ползунок">
-          <div class="range-labels"><span id="amount-min">50 000 ₽</span><span id="amount-max">30 000 000 ₽</span></div>
+          <div id="amount-controls" hidden>
+            <input id="amount-range" class="range" type="range" min="0" max="1000" value="300" aria-label="Сумма вклада, ползунок">
+            <div class="range-labels"><span id="amount-min">50 000 ₽</span><span id="amount-max">30 000 000 ₽</span></div>
+          </div>
           <p id="amount-error" class="error" role="alert" hidden></p>
         </div>
       </div>
       <div id="payout" class="payout">
         <button id="payout-button" type="button" class="field select-field" aria-label="Когда получать проценты" aria-haspopup="listbox" aria-expanded="false" aria-controls="payout-options"><span><span class="caption">Когда получать проценты</span><span id="payout-value">В конце срока</span></span><span class="chevron" aria-hidden="true"></span></button>
-        <div id="payout-fixed" class="field fixed-field" role="group" aria-label="Когда получать проценты" aria-describedby="payout-explanation" hidden><span class="caption">Когда получать проценты</span><span>Каждый месяц</span></div>
+        <div id="payout-fixed" class="field select-field fixed-field" role="group" aria-label="Когда получать проценты" aria-disabled="true" aria-describedby="payout-explanation" hidden><span><span class="caption">Когда получать проценты</span><span>Каждый месяц</span></span><span class="lock-accessory" aria-hidden="true"><span class="lock-icon"></span></span></div>
         <p id="payout-explanation" class="field-explanation" role="status" hidden>В юанях проценты выплачиваются только ежемесячно</p>
         <div id="payout-options" class="dropdown" role="listbox" aria-label="Когда получать проценты" hidden>
           <button id="maturity-option" class="option" type="button" role="option" aria-selected="true" data-frequency="maturity"><span>В конце срока</span><small id="maturity-description">Ставка 12,4%. Проценты придут только после закрытия вклада</small></button>

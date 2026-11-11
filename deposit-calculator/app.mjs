@@ -56,6 +56,7 @@ function render() {
   $('amount-min').textContent = money(min) + ' ' + symbol;
   $('amount-max').textContent = money(max) + ' ' + symbol;
   $('currency-symbol').textContent = symbol;
+  $('amount-controls').hidden = autoCurrency;
   $('khl-chip').hidden = !autoCurrency;
   $('khl-banner').hidden = !state.khl;
   $('months').disabled = Boolean(state.khl);
