@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Калькулятор вклада — прототип</title>
+  <link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <main class="frame">
+    <section class="calculator" aria-labelledby="heading">
+      <h1 id="heading">Настройте вклад</h1>
+      <div class="currencies" role="group" aria-label="Валюта вклада">
+        <button type="button" data-currency="RUB" aria-pressed="true">В рублях</button>
+        <button type="button" data-currency="CNY" aria-pressed="false" aria-disabled="true" aria-describedby="currency-help">В юанях</button>
+      </div>
+      <span id="currency-help" class="sr-only">На вкладе с выплатой в конце срока доступны только рубли</span>
+      <div class="fields">
+        <div class="field-group">
+          <label class="field" for="months"><span class="caption">Срок вклада</span><span class="input-line"><input id="months" type="text" inputmode="numeric" autocomplete="off" value="12" aria-describedby="months-error"><span id="month-word">месяцев</span></span></label>
+          <input id="month-range" class="range" type="range" min="1" max="24" value="12" aria-label="Срок вклада, ползунок">
+          <div class="range-labels"><span>1 месяц</span><span>24 месяца</span></div>
+          <p id="months-error" class="error" role="alert" hidden></p>
+        </div>
+        <div class="field-group">
+          <label class="field" for="amount"><span class="caption">Сумма вклада</span><span class="input-line"><input id="amount" type="text" inputmode="decimal" autocomplete="off" value="1 000 000" aria-describedby="amount-error"><span id="currency-symbol">₽</span></span></label>
+          <input id="amount-range" class="range" type="range" min="0" max="1000" value="300" aria-label="Сумма вклада, ползунок">
+          <div class="range-labels"><span id="amount-min">50 000 ₽</span><span id="amount-max">30 000 000 ₽</span></div>
+          <p id="amount-error" class="error" role="alert" hidden></p>
+        </div>
+      </div>
+      <div id="payout" class="payout">
+        <button id="payout-button" type="button" class="field select-field" aria-label="Когда получать проценты" aria-haspopup="listbox" aria-expanded="false" aria-controls="payout-options"><span><span class="caption">Когда получать проценты</span><span id="payout-value">В конце срока</span></span><span class="chevron" aria-hidden="true"></span></button>
+        <div id="payout-fixed" class="field fixed-field" role="group" aria-label="Когда получать проценты" aria-describedby="payout-explanation" hidden><span class="caption">Когда получать проценты</span><span>Каждый месяц</span></div>
+        <p id="payout-explanation" class="field-explanation" role="status" hidden>В юанях проценты выплачиваются только ежемесячно</p>
+        <div id="payout-options" class="dropdown" role="listbox" aria-label="Когда получать проценты" hidden>
+          <button id="maturity-option" class="option" type="button" role="option" aria-selected="true" data-frequency="maturity"><span>В конце срока</span><small id="maturity-description">Ставка 12,4%. Проценты придут только после закрытия вклада</small></button>
+          <button id="monthly-option" class="option" type="button" role="option" aria-selected="false" data-frequency="monthly"><span>Каждый месяц</span><small>Проценты приходят раз в месяц в один и тот же день</small></button>
+        </div>
+      </div>
+      <div class="replenishment">
+        <label class="checkbox-label"><input id="replenishable" type="checkbox"><span class="checkbox" aria-hidden="true"></span><span>Пополняемый вклад</span></label>
+        <button class="hint" type="button" data-hint="replenishment" aria-label="Условия пополнения" aria-expanded="false"><img src="assets/question.svg" alt=""></button>
+      </div>
+      <section class="result" aria-label="Расчёт дохода" aria-live="polite" aria-atomic="true">
+        <h2>Ставка <span id="rate">12,4%</span></h2>
+        <div class="result-row">
+          <div class="metric"><span class="avatar"><img src="assets/wallet.svg" alt=""></span><div><div id="yield" class="metric-value">12,4%</div><div class="metric-label">Доходность <button class="hint" type="button" data-hint="yield" aria-label="Как рассчитана доходность" aria-expanded="false"><img src="assets/question.svg" alt=""></button></div></div></div>
+          <div class="metric"><span class="avatar"><img src="assets/cash.svg" alt=""></span><div><div class="amounts"><span id="total">1 124 000 ₽</span><span class="profit"><span class="arrow" aria-hidden="true"></span><span id="income">124 000 ₽</span></span></div><div class="metric-label">Сумма в конце срока <button class="hint" type="button" data-hint="total" aria-label="Как рассчитана сумма в конце срока" aria-expanded="false"><img src="assets/question.svg" alt=""></button></div></div></div>
+        </div>
+      </section>
+      <p class="demo-note">Демонстрационный расчёт</p>
+      <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+    </section>
+  </main>
+  <div id="notice" class="notice" role="status" hidden><span id="notice-text"></span><button id="notice-close" type="button" aria-label="Закрыть уведомление">×</button></div>
+</body>
+</html>

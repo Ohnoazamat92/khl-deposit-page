@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tui-ic-medium / wallet-arrow-up">
+<mask id="mask0_0_1415" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="2" y="3" width="22" height="18">
+<g id="Mask">
+<path id="Mask_2" d="M24 12L16.5 3L11.5 9H17V18C17 19.6541 15.653 20.9955 14 21H16.5C18.7091 21 20.5 19.2091 20.5 17V12H24Z" fill="black"/>
+<path id="Mask_3" opacity="0.8" d="M2 7.5V18C2 19.6569 3.34315 21 5 21H14C15.6569 21 17 19.6569 17 18V9H3.5C2.67157 9 2 8.32843 2 7.5ZM12 14.75C12 14.0596 12.5596 13.5 13.25 13.5H13.75C14.4404 13.5 15 14.0596 15 14.75C15 15.4404 14.4404 16 13.75 16H13.25C12.5596 16 12 15.4404 12 14.75Z" fill-rule="evenodd" clip-rule="evenodd" fill="black"/>
+<path id="Mask_4" opacity="0.35" d="M2 7.5C2 6.67157 2.67157 6 3.5 6L14 6L11.5 9H3.5C2.67157 9 2 8.32843 2 7.5Z" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_1415)">
+<path id="Color" d="M0 0H24V24H0V0Z" fill="white"/>
+</g>
+</g>
+</svg>

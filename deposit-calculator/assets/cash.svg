@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="tui-ic-medium / cash-check">
+<mask id="mask0_0_1455" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="5" width="24" height="16">
+<g id="Mask">
+<path id="Mask_2" opacity="0.35" d="M0.5 18H20C20 19.3807 18.8807 20.5 17.5 20.5H0.5V18Z" fill="black"/>
+<path id="Mask_3" opacity="0.7" d="M19 5H5V18H19V5ZM11.2426 15.2427L16.9429 9.54231L16.5451 9.16361C15.759 8.41511 14.5194 8.43031 13.7518 9.19785L11.2426 11.7071L10.1819 10.6465C9.40086 9.86542 8.1345 9.86544 7.35346 10.6465L7 11L11.2426 15.2427Z" fill-rule="evenodd" clip-rule="evenodd" fill="black"/>
+<path id="Mask_4" d="M4.5 5C2.29086 5 0.5 6.79086 0.5 9V18H5V5H4.5ZM23.5 5H19V18H20.5C22.1569 18 23.5 16.6569 23.5 15V5Z" fill-rule="evenodd" clip-rule="evenodd" fill="black"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_1455)">
+<path id="Color" d="M0 0H24V24H0V0Z" fill="white"/>
+</g>
+</g>
+</svg>
