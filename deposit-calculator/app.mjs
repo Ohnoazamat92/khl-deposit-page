@@ -47,7 +47,7 @@ function render() {
   if (!errors.amount && document.activeElement !== $('amount')) $('amount').value = money(amount);
   $('month-word').textContent = monthWord(state.months);
   $('months').style.width = Math.max(1, $('months').value.length) + 'ch';
-  $('amount').style.width = Math.min(17, Math.max(1, $('amount').value.length)) + 'ch';
+  $('amount-sizer').textContent = $('amount').value || '0';
   $('month-range').value = state.months;
   $('month-range').style.setProperty('--progress', (state.months - 1) / 23 * 100 + '%');
   $('month-range').setAttribute('aria-valuetext', `${state.months} ${monthWord(state.months)}`);
@@ -117,7 +117,8 @@ function validate(field) {
 }
 for (const field of ['months', 'amount']) {
   $(field).addEventListener('input', () => {
-    $(field).style.width = Math.min(17, Math.max(1, $(field).value.length)) + 'ch';
+    if (field === 'amount') $('amount-sizer').textContent = $(field).value || '0';
+    else $(field).style.width = Math.min(17, Math.max(1, $(field).value.length)) + 'ch';
     validate(field);
   });
   $(field).addEventListener('blur', () => {

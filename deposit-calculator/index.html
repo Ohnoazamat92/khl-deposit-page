@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Калькулятор вклада — прототип</title>
-  <link rel="stylesheet" href="style.css"><script type="module" src="app.mjs"></script>
+  <link rel="stylesheet" href="style.css?v=20261112-amount2"><script type="module" src="app.mjs?v=20261112-amount2"></script>
 </head>
 <body>
   <main class="frame">
@@ -23,7 +23,7 @@
           <p id="months-error" class="error" role="alert" hidden></p>
         </div>
         <div class="field-group">
-          <label class="field" for="amount"><span class="caption">Сумма вклада</span><span class="input-line"><input id="amount" type="text" inputmode="decimal" autocomplete="off" value="1 000 000" aria-describedby="amount-error"><span id="currency-symbol">₽</span></span></label>
+          <label class="field" for="amount"><span class="caption">Сумма вклада</span><span class="input-line"><span class="amount-input"><span id="amount-sizer" aria-hidden="true">1 000 000</span><input id="amount" type="text" inputmode="decimal" autocomplete="off" value="1 000 000" aria-describedby="amount-error"></span><span id="currency-symbol">₽</span></span></label>
           <div id="amount-controls" hidden>
             <input id="amount-range" class="range" type="range" min="0" max="1000" value="300" aria-label="Сумма вклада, ползунок">
             <div class="range-labels"><span id="amount-min">50 000 ₽</span><span id="amount-max">30 000 000 ₽</span></div>
